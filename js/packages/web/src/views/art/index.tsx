@@ -76,26 +76,25 @@ export const ArtView = () => {
   return (
     <Content>
       <Col>
-        <Row ref={ref}>
-          <Col xs={{ span: 24 }} md={{ span: 12 }} style={{ padding: '30px' }}>
-            <ArtContent
-              style={{ width: 300 }}
-              height={300}
-              width={300}
-              className="artwork-image"
-              pubkey={id}
-              active={true}
-              allowMeshRender={true}
-            />
+      <Row>
+          <Col span={24} style={{ padding: '30px' }}>
+              <ArtContent
+                style={{ width: "100%" }}
+                className="artwork-image"
+                pubkey={id}
+                active={true}
+                allowMeshRender={true}
+              />
           </Col>
+          </Row>
+        <Row ref={ref}>
+
           {/* <Divider /> */}
           <Col
-            xs={{ span: 24 }}
-            md={{ span: 12 }}
             style={{ textAlign: 'left', fontSize: '1.4rem' }}
           >
             <Row>
-              <div style={{ fontWeight: 700, fontSize: '4rem' }}>
+              <div style={{ fontWeight: 700, fontSize: '3rem' }}>
                 {art.title || <Skeleton paragraph={{ rows: 0 }} />}
               </div>
             </Row>
@@ -110,7 +109,7 @@ export const ArtView = () => {
                 <ViewOn id={id} />
               </Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col>
                 <h6 style={{ marginTop: 5 }}>Created By</h6>
                 <div className="creators">
@@ -160,7 +159,7 @@ export const ArtView = () => {
                   })}
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             <Row>
               <Col>
                 <h6 style={{ marginTop: 5 }}>Edition</h6>
@@ -201,21 +200,21 @@ export const ArtView = () => {
               onMint={async () => await setRemountArtMinting(prev => prev + 1)}
             />
           </Col>
-          <Col span="12">
-            <Divider />
-            {art.creators?.find(c => !c.verified) && unverified}
+          {/* <Col span="12"> */}
+            {/* <Divider /> */}
+            {/* {art.creators?.find(c => !c.verified) && unverified}
             <br />
             <div className="info-header">ABOUT THE CREATION</div>
             <div className="info-content">{description}</div>
-            <br />
+            <br /> */}
             {/*
               TODO: add info about artist
 
 
             <div className="info-header">ABOUT THE CREATOR</div>
             <div className="info-content">{art.about}</div> */}
-          </Col>
-          <Col span="12">
+          {/* </Col> */}
+          {/* <Col span="12">
             {attributes && (
               <>
                 <Divider />
@@ -232,7 +231,7 @@ export const ArtView = () => {
                 </List>
               </>
             )}
-          </Col>
+          </Col> */}
         </Row>
       </Col>
     </Content>
