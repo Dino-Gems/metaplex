@@ -7,6 +7,7 @@ import { CardLoader } from '../../components/MyLoader';
 import { useCreator, useCreatorArts } from '../../hooks';
 
 export const ArtistView = () => {
+  console.log("ArtistView loaded")
   const { id } = useParams<{ id: string }>();
   const creator = useCreator(id);
   const artwork = useCreatorArts(id);

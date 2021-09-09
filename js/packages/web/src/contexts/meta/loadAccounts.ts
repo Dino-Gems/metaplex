@@ -150,7 +150,7 @@ export const loadAccounts = async (connection: Connection, all: boolean) => {
         tempCache.whitelistedCreatorsByCreator,
       );
 
-      if (whitelistedCreators.length > 5) {
+      if (whitelistedCreators.length > 3) {
         console.log(' too many creators, pulling all nfts in one go');
         additionalPromises.push(
           getProgramAccounts(connection, METADATA_PROGRAM_ID).then(
@@ -160,35 +160,35 @@ export const loadAccounts = async (connection: Connection, all: boolean) => {
       } else {
         console.log('pulling optimized nfts');
 
-        // for (let i = 0; i < 1; i++) {
-        // for (let j = 0; j < whitelistedCreators.length; j++) {
-        additionalPromises.push(
-          getProgramAccounts(connection, METADATA_PROGRAM_ID, {
-            filters: [
-              {
-                memcmp: {
-                  offset:
-                    1 + // key
-                    32 + // update auth
-                    32 + // mint
-                    4 + // name string length
-                    MAX_NAME_LENGTH + // name
-                    4 + // uri string length
-                    MAX_URI_LENGTH + // uri
-                    4 + // symbol string length
-                    MAX_SYMBOL_LENGTH + // symbol
-                    2 + // seller fee basis points
-                    1 + // whether or not there is a creators vec
-                    4 + // creators vec length
-                    0 * MAX_CREATOR_LEN,
-                  bytes: '2SnCaUHcgWXnh3iZc31X1m6Pp8eLzvP6dm49LAbw6Djj',
-                },
-              },
-            ],
-          }).then(forEach(processMetaData)),
-        );
-        // }
-        // }
+        for (let i = 0; i < 1; i++) {
+          for (let j = 0; j < whitelistedCreators.length; j++) {
+            additionalPromises.push(
+              getProgramAccounts(connection, METADATA_PROGRAM_ID, {
+                filters: [
+                  {
+                    memcmp: {
+                      offset:
+                        1 + // key
+                        32 + // update auth
+                        32 + // mint
+                        4 + // name string length
+                        MAX_NAME_LENGTH + // name
+                        4 + // uri string length
+                        MAX_URI_LENGTH + // uri
+                        4 + // symbol string length
+                        MAX_SYMBOL_LENGTH + // symbol
+                        2 + // seller fee basis points
+                        1 + // whether or not there is a creators vec
+                        4 + // creators vec length
+                        i * MAX_CREATOR_LEN,
+                      bytes: whitelistedCreators[j].info.address,
+                    },
+                  },
+                ],
+              }).then(forEach(processMetaData)),
+            );
+          }
+        }
       }
     }),
   ];
@@ -307,6 +307,7 @@ export const metadataByMintUpdater = async (
     if (masterEditionKey) {
       state.metadataByMasterEdition[masterEditionKey] = metadata;
     }
+    console.log(key, metadata);
     state.metadataByMint[key] = metadata;
     state.metadata.push(metadata);
   } else {

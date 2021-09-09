@@ -97,7 +97,7 @@ export const ArtCreateView = () => {
       symbol: attributes.symbol,
       creators: attributes.creators,
       description: attributes.description,
-      sellerFeeBasisPoints: attributes.seller_fee_basis_points,
+      sellerFeeBasisPoints: 444,
       image: attributes.image,
       animation_url: attributes.animation_url,
       attributes: attributes.attributes,

@@ -3,7 +3,7 @@ import { ArtCard } from '../../components/ArtCard';
 import { Layout, Row, Col, Tabs } from 'antd';
 import Masonry from 'react-masonry-css';
 import { Link } from 'react-router-dom';
-import { useCreatorArts, useUserArts } from '../../hooks';
+// import { useCreatorArts, useUserArts } from '../../hooks';
 import { useMeta } from '../../contexts';
 import { CardLoader } from '../../components/MyLoader';
 import { useWallet } from '@solana/wallet-adapter-react';
@@ -20,30 +20,25 @@ export enum ArtworkViewState {
 
 export const ArtworksView = () => {
   const { connected, publicKey } = useWallet();
-  const ownedMetadata = useUserArts();
-  const createdMetadata = useCreatorArts(publicKey?.toBase58() || '');
+  // const ownedMetadata = useUserArts();
+  // const createdMetadata = useCreatorArts(publicKey?.toBase58() || '');
   const { metadata, isLoading } = useMeta();
   const [activeKey, setActiveKey] = useState(ArtworkViewState.Metaplex);
   const breakpointColumnsObj = {
-    default: 2,
-    1100: 2,
-    700: 1,
+    default: 3,
+    1100: 3,
+    700: 2,
     500: 1,
   };
 
-  const items =
-    activeKey === ArtworkViewState.Owned
-      ? ownedMetadata.map(m => m.metadata)
-      : activeKey === ArtworkViewState.Created
-      ? createdMetadata
-      : metadata;
+  const items = metadata;
 
   useEffect(() => {
-    if (connected) {
-      setActiveKey(ArtworkViewState.Owned);
-    } else {
+    // if (connected) {
+    //   setActiveKey(ArtworkViewState.Owned);
+    // } else {
       setActiveKey(ArtworkViewState.Metaplex);
-    }
+    // }
   }, [connected, setActiveKey]);
 
   const artworkGrid = (
@@ -61,8 +56,8 @@ export const ArtworksView = () => {
                   key={id}
                   pubkey={m.pubkey}
                   preview={false}
-                  height={250}
-                  width={250}
+                  height={300}
+                  width={300}
                 />
               </Link>
             );
@@ -76,17 +71,18 @@ export const ArtworksView = () => {
       <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
         <Col style={{ width: '100%', marginTop: 10 }}>
           <Row>
-            <Tabs
-              activeKey={activeKey}
+            {artworkGrid}
+
+            {/* <Tabs
+              // activeKey={activeKey}
               onTabClick={key => setActiveKey(key as ArtworkViewState)}
-            >
-              <TabPane
+            > */}
+              {/* <TabPane
                 tab={<span className="tab-title">All</span>}
                 key={ArtworkViewState.Metaplex}
               >
-                {artworkGrid}
-              </TabPane>
-              {connected && (
+              </TabPane> */}
+              {/* {connected && (
                 <TabPane
                   tab={<span className="tab-title">Owned</span>}
                   key={ArtworkViewState.Owned}
@@ -101,8 +97,8 @@ export const ArtworksView = () => {
                 >
                   {artworkGrid}
                 </TabPane>
-              )}
-            </Tabs>
+              )} */}
+            {/* </Tabs> */}
           </Row>
         </Col>
       </Content>

@@ -42,7 +42,7 @@ export const ArtSelector = (props: ArtSelectorProps) => {
   };
 
   const breakpointColumnsObj = {
-    default: 4,
+    default: 2,
     1100: 3,
     700: 2,
     500: 1,

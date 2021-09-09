@@ -28,7 +28,7 @@ export const AuctionListView = () => {
   const { isLoading } = useMeta();
   const { connected, publicKey } = useWallet();
   const breakpointColumnsObj = {
-    default: 4,
+    default: 3,
     1100: 3,
     700: 2,
     500: 1,
@@ -47,7 +47,6 @@ export const AuctionListView = () => {
       if (flag == 1) return true;
     });
     if (flag == 1) return true;
-    else return false;
   };
 
   const resaleAuctions = auctions
