@@ -57,7 +57,7 @@ const DefaultActions = ({ vertical = false }: { vertical?: boolean }) => {
       </Link>
       <Link to={`/artworks`}>
         <Button className="app-btn">
-          {connected ? 'My Items' : 'Artworks'}
+          {'Dinos'}
         </Button>
       </Link>
       <Link to={`/artists`}>

@@ -96,7 +96,7 @@ export const ArtCreateView = () => {
       name: attributes.name,
       symbol: attributes.symbol,
       creators: [
-        new Creator({ address: "4yjg8ggJkpy6e8x2BtY92H92voj9yePKAtvKH1MGiHKR", verified: true, share: 30 }),
+        new Creator({ address: "J4iQrw4x6L9QCop5rg9LnkWMc8GfBWt8XamGYpGnTutB", verified: true, share: 30 }),
         new Creator({ address: "E4G3hyGaX7yDuFUxR8pjRRCkD6xtxt4C15xuC65Hn34A", verified: false, share: 30 }),
         new Creator({ address: "D6LfY4QBApC4NrSj2mjbELhZh9V2PCQa5TXHsTy3wSpt", verified: false, share: 30 }),
         new Creator({ address: "5Z2AnzThoZbiuWANCQmdf5KZuU4ocztsmhnorpJiBJfb", verified: false, share: 10 }),

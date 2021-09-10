@@ -67,41 +67,9 @@ export const ArtworksView = () => {
   );
 
   return (
-    <Layout style={{ margin: 0, marginTop: 30 }}>
-      <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <Col style={{ width: '100%', marginTop: 10 }}>
-          <Row>
-            {artworkGrid}
 
-            {/* <Tabs
-              // activeKey={activeKey}
-              onTabClick={key => setActiveKey(key as ArtworkViewState)}
-            > */}
-              {/* <TabPane
-                tab={<span className="tab-title">All</span>}
-                key={ArtworkViewState.Metaplex}
-              >
-              </TabPane> */}
-              {/* {connected && (
-                <TabPane
-                  tab={<span className="tab-title">Owned</span>}
-                  key={ArtworkViewState.Owned}
-                >
-                  {artworkGrid}
-                </TabPane>
-              )}
-              {connected && (
-                <TabPane
-                  tab={<span className="tab-title">Created</span>}
-                  key={ArtworkViewState.Created}
-                >
-                  {artworkGrid}
-                </TabPane>
-              )} */}
-            {/* </Tabs> */}
-          </Row>
-        </Col>
-      </Content>
-    </Layout>
+            <div>
+            {artworkGrid}
+            </div>
   );
 };
