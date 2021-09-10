@@ -55,7 +55,7 @@ export const ArtView = () => {
 
   const tag = (
     <div className="info-header">
-      {/* <Tag color="blue">UNVERIFIED</Tag> */}
+      <Tag color="blue">UNVERIFIED</Tag>
     </div>
   );
 
