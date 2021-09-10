@@ -95,7 +95,8 @@ export const ArtCard = (props: ArtCardProps) => {
         title={`${name}`}
         description={
           <>
-            <MetaAvatar creators={creators} size={32} />
+          <div style={{ height: "20px"}}></div>
+            {/* <MetaAvatar creators={creators} size={32} /> */}
             {/* {art.type === ArtType.Master && (
               <>
                 <br />
@@ -107,7 +108,7 @@ export const ArtCard = (props: ArtCardProps) => {
                 )}
               </>
             )} */}
-            <div className="edition-badge">{badge}</div>
+            {/* <div className="edition-badge">{badge}</div> */}
           </>
         }
       />
